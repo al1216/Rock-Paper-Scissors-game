@@ -9,6 +9,7 @@ body {
 .container{
     position: relative;
 }
+
 .scores-section {
   display: flex;
   width: 800px;
