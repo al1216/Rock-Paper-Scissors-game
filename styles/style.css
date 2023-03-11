@@ -65,6 +65,7 @@ body {
 }
 
 .stone, .scissor, .paper{
+    cursor: pointer;
     width: 110px;
     height: 110px;
     background-color: #ffffff;
@@ -138,6 +139,10 @@ body {
     left: 710px;
 }
 
+.rules{
+    cursor: pointer;
+}
+
 .title-rules{
     position: absolute;
     width: 119px;
@@ -151,7 +156,19 @@ body {
     right: 0px;
 }
 
+.each-rule{
+    list-style-type: square;
+    color: #FFD600; 
+    font-size: 22px;
+}
+
+li .li-item{
+    color: white; /* text color */
+    font-size: 13px;
+}
+
 #modal{
+    cursor: text;
     position: absolute;
     width: 310px;
     height: 325px;
