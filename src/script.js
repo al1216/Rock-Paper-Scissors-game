@@ -146,7 +146,7 @@ function add_specs(wins){
     <h1 class="win-msg">YOU ${msg}</h1>
     <h2 class="against-pc">AGAINST PC</h2>
     <div class="btn">
-            <p class="btn-content">PLAY AGAIN</p>
+    <a href="../index.html" style="text-decoration: none; color: #6B6B6B;"><p class="btn-content">PLAY AGAIN</p></a>
     </div>
     `;
 
@@ -246,7 +246,7 @@ function add_specs(wins){
     status.innerHTML = `
     <h1 class="tie-msg">TIE UP</h1>
     <div class="btn">
-            <p class="btn-content">REPLAY</p>
+    <a href="../index.html" style="text-decoration: none; color: #6B6B6B;"><p class="btn-content">PLAY AGAIN</p></a>
     </div>
     `;
     document.getElementsByClassName("lower-half")[0].appendChild(status);
@@ -279,6 +279,51 @@ function add_specs(wins){
   }
 }
 
+function update_score_user(){
+  let ans = Number(localStorage.getItem('user_points'));
+  ans = ans + 1;
+  localStorage.setItem("user_points",ans);
+  return ans;
+}
+
+function update_score_cs(){
+  let ans = Number(localStorage.getItem('cs_points'));
+  ans = ans + 1;
+  localStorage.setItem("cs_points",ans);
+  return ans;
+}
+
+// local storage init for user
+if (!localStorage.getItem('user_points')){
+  localStorage.setItem("user_points",0);
+  document.getElementsByClassName("y-score")[0].innerHTML = `&nbsp;&nbsp;${localStorage.getItem('user_points')}`;
+}
+
+// local storage init for cs
+if (!localStorage.getItem('cs_points')){
+  localStorage.setItem("cs_points",0);
+  document.getElementsByClassName("cs-score")[0].innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;${localStorage.getItem('cs_points')}`;
+}
+
+if (Number(localStorage.getItem('user_points')) <= 9){
+document.getElementsByClassName("y-score")[0].innerHTML = `&nbsp;&nbsp;${localStorage.getItem('user_points')}`;
+}
+
+if (Number(localStorage.getItem('cs_points')) <= 9){
+document.getElementsByClassName("cs-score")[0].innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;${localStorage.getItem('cs_points')}`;
+}
+
+if (Number(localStorage.getItem('user_points')) >= 10){
+  document.getElementsByClassName("y-score")[0].innerHTML = `&nbsp${localStorage.getItem('user_points')}`;
+}
+
+if (Number(localStorage.getItem('cs_points')) >= 10){
+  document.getElementsByClassName("cs-score")[0].innerHTML = `&nbsp;&nbsp;&nbsp;${localStorage.getItem('cs_points')}`;
+}
+
+// document.getElementsByClassName("y-score")[0].innerHTML = `&nbsp;&nbsp;${localStorage.getItem('user_points')}`;
+// document.getElementsByClassName("cs-score")[0].innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;${localStorage.getItem('cs_points')}`;
+
 let lower_half = document.getElementById("lower-half");
 
 let stone = document.getElementsByClassName("stone")[0];
@@ -309,12 +354,24 @@ stone.addEventListener("click",()=>{
   if (wins === 1){
     user_color = 'BD00FF';
     cs_color = 'FFA943';
-    y_score.innerHTML = `&nbsp;&nbsp;${Number(y_score.innerText) + 1}`;
+    // y_score.innerHTML = `&nbsp;&nbsp;${update_score_user()}`;
+    if (Number(localStorage.getItem('user_points')) <= 9){
+      y_score.innerHTML = `&nbsp;&nbsp;${update_score_user()}`;
+    }
+    else{
+      y_score.innerHTML = `&nbsp;${update_score_user()}`;
+    }
   }
   else if (wins === -1){
     user_color = 'FFA943';
     cs_color = 'BD00FF';
-    cs_score.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;${Number(cs_score.innerText) + 1}`;
+    // cs_score.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;${update_score_cs()}`;
+    if (Number(localStorage.getItem('cs_points')) <= 9){
+      cs_score.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;${update_score_cs()}`;
+    }
+    else{
+      cs_score.innerHTML = `&nbsp;&nbsp;&nbsp;${update_score_cs()}`;
+    }
   }
   else {
     user_color = '0074B6';
@@ -384,12 +441,24 @@ scissor.addEventListener("click",()=>{
   if (wins === 1){
     user_color = 'BD00FF';
     cs_color = 'FFA943';
-    y_score.innerHTML = `&nbsp;&nbsp;${Number(y_score.innerText) + 1}`;
+    // y_score.innerHTML = `&nbsp;&nbsp;${update_score_user()}`;
+    if (Number(localStorage.getItem('user_points')) <= 9){
+      y_score.innerHTML = `&nbsp;&nbsp;${update_score_user()}`;
+    }
+    else{
+      y_score.innerHTML = `&nbsp;${update_score_user()}`;
+    }
   }
   else if (wins === -1){
     user_color = 'FFA943';
     cs_color = 'BD00FF';
-    cs_score.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;${Number(cs_score.innerText) + 1}`;
+    // cs_score.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;${update_score_cs()}`;
+    if (Number(localStorage.getItem('cs_points')) <= 9){
+      cs_score.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;${update_score_cs()}`;
+    }
+    else{
+      cs_score.innerHTML = `&nbsp;&nbsp;&nbsp;${update_score_cs()}`;
+    }
   }
   else {
     user_color = '0074B6';
@@ -459,12 +528,24 @@ paper.addEventListener("click",()=>{
   if (wins === 1){
     user_color = 'BD00FF';
     cs_color = 'FFA943';
-    y_score.innerHTML = `&nbsp;&nbsp;${Number(y_score.innerText) + 1}`;
+    // y_score.innerHTML = `&nbsp;&nbsp;${update_score_user()}`;
+    if (Number(localStorage.getItem('user_points')) <= 9){
+      y_score.innerHTML = `&nbsp;&nbsp;${update_score_user()}`;
+    }
+    else{
+      y_score.innerHTML = `&nbsp;${update_score_user()}`;
+    }
   }
   else if (wins === -1){
     user_color = 'FFA943';
     cs_color = 'BD00FF';
-    cs_score.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;${Number(cs_score.innerText) + 1}`;
+    // cs_score.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;${update_score_cs()}`;
+    if (Number(localStorage.getItem('cs_points')) <= 9){
+      cs_score.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;${update_score_cs()}`;
+    }
+    else{
+      cs_score.innerHTML = `&nbsp;&nbsp;&nbsp;${update_score_cs()}`;
+    }
   }
   else {
     user_color = '0074B6';
@@ -509,4 +590,3 @@ paper.addEventListener("click",()=>{
   add_specs(wins);
 
 })
-
