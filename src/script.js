@@ -31,6 +31,254 @@ function who_wins(user,computer){
   else return -1;
 }
 
+function add_ripple_effect_user_wins(){
+  let ripple = document.createElement("div");
+  ripple.classList.add("ripple-img");
+  ripple.innerHTML = `
+  <img src="../assets/Ellipse 3.png" alt="" class="i3">
+  <img src="../assets/Ellipse 5.png" alt="" class="i1">
+  <img src="../assets/Ellipse 4.png" alt="" class="i2">
+  `;
+  document.getElementsByClassName("lower-half")[0].appendChild(ripple);
+  document.getElementsByClassName("ripple-img")[0].style.cssText = `
+  position: relative;
+  `;
+  document.getElementsByClassName("i3")[0].style.cssText = `
+  position: absolute;
+  left: 304px;
+  top: 342px;
+  z-index: -1;
+  `;
+
+  document.getElementsByClassName("i1")[0].style.cssText = `
+  position: absolute;
+  left: 328px;
+  top: 368px;
+  z-index: -2;
+  `;
+
+  document.getElementsByClassName("i2")[0].style.cssText = `
+  position: absolute;
+  left: 218px;
+  top: 257px;
+  z-index: -3;
+  `;
+}
+
+function add_ripple_effect_cs_wins(){
+  let ripple = document.createElement("div");
+  ripple.classList.add("ripple-img");
+  ripple.innerHTML = `
+  <img src="../assets/Ellipse 3.png" alt="" class="i3">
+  <img src="../assets/Ellipse 5.png" alt="" class="i1">
+  <img src="../assets/Ellipse 4.png" alt="" class="i2">
+  `;
+  document.getElementsByClassName("lower-half")[0].appendChild(ripple);
+  document.getElementsByClassName("ripple-img")[0].style.cssText = `
+  position: relative;
+  `;
+  document.getElementsByClassName("i3")[0].style.cssText = `
+  position: absolute;
+  left: 874px;
+  top: 342px;
+  z-index: -1;
+  `;
+
+  document.getElementsByClassName("i1")[0].style.cssText = `
+  position: absolute;
+  left: 898px;
+  top: 368px;
+  z-index: -2;
+  `;
+
+  document.getElementsByClassName("i2")[0].style.cssText = `
+  position: absolute;
+  left: 787px;
+  top: 257px;
+  z-index: -3;
+  `;
+}
+
+function add_specs(wins){
+  let picked = document.createElement("div");
+  picked.classList.add("picked-title");
+  picked.innerHTML = `
+  <p class="y-picked">YOU PICKED</p>
+  <p class="cs-picked">PC PICKED</p>
+  `;
+  document.getElementsByClassName("lower-half")[0].appendChild(picked);
+  document.getElementsByClassName("y-picked")[0].style.cssText = `
+  position: absolute;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 20px;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  left: 400px;
+  top: 331px;
+  `;
+  document.getElementsByClassName("cs-picked")[0].style.cssText = `
+  position: absolute;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 20px;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  left: 976px;
+  top: 331px;
+  `;
+
+  let msg; let x;
+  if (wins === 1){
+    msg = "WIN";
+    x = 700;
+  }
+  else if (wins === -1){
+    msg = "LOST";
+    x = 612;
+  }
+
+  let status = document.createElement("div");
+  status.classList.add("game-status");
+
+  if (wins === 1 || wins === -1){
+    status.innerHTML = `
+    <h1 class="win-msg">YOU ${msg}</h1>
+    <h2 class="against-pc">AGAINST PC</h2>
+    <div class="btn">
+            <p class="btn-content">PLAY AGAIN</p>
+    </div>
+    `;
+
+    document.getElementsByClassName("lower-half")[0].appendChild(status);
+    document.getElementsByClassName("btn")[0].style.cssText = `
+    cursor: pointer;
+    position: absolute;
+    width: 174px;
+    height: 44px;
+    left: ${x}px;
+    top: 600px;
+    background: #FFFFFF;
+    border-radius: 9px;
+    color: #6B6B6B;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    `;
+  }
+
+  if (wins === 1){ 
+    let next_btn = document.createElement("div");
+    next_btn.classList.add("next-btn");
+    next_btn.innerHTML = `
+    <a href="../congratulations page/congrats.html" style="text-decoration: none; color: white;">
+    <h1 class="title-next">NEXT</h1>
+    </a>
+    `;
+    document.getElementsByClassName("lower-half")[0].appendChild(next_btn);
+    document.getElementsByClassName("title-next")[0].style.cssText = `
+    position: absolute;
+    width: 119px;
+    height: 40px;
+    border: 2px solid #FFFFFF;
+    border-radius: 10px;
+    color: #FFFFFF;
+    text-align: center;
+    float:right;
+    top: 640px;
+    right: 0px;
+    cursor: pointer;
+    `; 
+
+    document.getElementsByClassName("title-rules")[0].style.cssText = `
+    right: 145px;
+    `;
+
+    document.getElementsByClassName("win-msg")[0].style.cssText = `
+    font-weight: 800;
+    font-size: 39px;
+    line-height: 46px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+    position: absolute;
+    left: 689px;
+    top: 450px;
+    `;
+
+    document.getElementsByClassName("against-pc")[0].style.cssText = `
+    font-weight: 800;
+    font-size: 25px;
+    line-height: 29px;text-align: center;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+    position: absolute;
+    left: 697px;
+    top: 513px;
+    `;
+  }
+
+  if (wins === -1){  
+    document.getElementsByClassName("win-msg")[0].style.cssText = `
+    font-weight: 800;
+    font-size: 39px;
+    line-height: 46px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+    position: absolute;
+    left: 596px;
+    top: 450px;
+    `;
+
+    document.getElementsByClassName("against-pc")[0].style.cssText = `
+    font-weight: 800;
+    font-size: 25px;
+    line-height: 29px;text-align: center;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+    position: absolute;
+    left: 617px;
+    top: 513px;
+    `;
+  }
+  else if (wins === 0){
+    status.innerHTML = `
+    <h1 class="tie-msg">TIE UP</h1>
+    <div class="btn">
+            <p class="btn-content">REPLAY</p>
+    </div>
+    `;
+    document.getElementsByClassName("lower-half")[0].appendChild(status);
+    document.getElementsByClassName("btn")[0].style.cssText = `
+    cursor: pointer;
+    position: absolute;
+    width: 174px;
+    height: 44px;
+    left: 651px;
+    top: 565px;
+    background: #FFFFFF;
+    border-radius: 9px;
+    color: #6B6B6B;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    `;
+    
+    document.getElementsByClassName("tie-msg")[0].style.cssText = `
+    font-weight: 800;
+    font-size: 39px;
+    line-height: 46px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+    position: absolute;
+    left: 666px;
+    top: 450px;
+    `;
+  }
+}
+
 let lower_half = document.getElementById("lower-half");
 
 let stone = document.getElementsByClassName("stone")[0];
@@ -103,12 +351,21 @@ stone.addEventListener("click",()=>{
     transform: translate(${x}%, ${y}%);
   `;
 
+  if (wins == 1){
+    add_ripple_effect_user_wins();
+  }
+  else if (wins == -1){
+    add_ripple_effect_cs_wins();
+  }
 
+  add_specs(wins);
 })
 
 scissor.addEventListener("click",()=>{
   let cs_selection = Math.floor(1 + Math.random() * 3);
   let image; let x; let y; let user_color; let cs_color;
+  let cs_score = document.getElementsByClassName("cs-score")[0];
+  let y_score = document.getElementsByClassName("y-score")[0];
   if (cs_selection === 1){
     image = 'paper';
     x = 25; y = 25;
@@ -126,11 +383,13 @@ scissor.addEventListener("click",()=>{
 
   if (wins === 1){
     user_color = 'BD00FF';
-    cs_color = 'FFA943'
+    cs_color = 'FFA943';
+    y_score.innerHTML = `&nbsp;&nbsp;${Number(y_score.innerText) + 1}`;
   }
   else if (wins === -1){
     user_color = 'FFA943';
     cs_color = 'BD00FF';
+    cs_score.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;${Number(cs_score.innerText) + 1}`;
   }
   else {
     user_color = '0074B6';
@@ -165,11 +424,22 @@ scissor.addEventListener("click",()=>{
     transform: translate(${x}%, ${y}%);
   `;
 
+  if (wins == 1){
+    add_ripple_effect_user_wins();
+  }
+  else if (wins == -1){
+    add_ripple_effect_cs_wins();
+  }
+
+  add_specs(wins);
+
 })
 
 paper.addEventListener("click",()=>{
   let cs_selection = Math.floor(1 + Math.random() * 3);
   let image; let x; let y; let user_color; let cs_color;
+  let cs_score = document.getElementsByClassName("cs-score")[0];
+  let y_score = document.getElementsByClassName("y-score")[0];
   if (cs_selection === 1){
     image = 'paper';
     x = 25; y = 25;
@@ -188,11 +458,13 @@ paper.addEventListener("click",()=>{
 
   if (wins === 1){
     user_color = 'BD00FF';
-    cs_color = 'FFA943'
+    cs_color = 'FFA943';
+    y_score.innerHTML = `&nbsp;&nbsp;${Number(y_score.innerText) + 1}`;
   }
   else if (wins === -1){
     user_color = 'FFA943';
     cs_color = 'BD00FF';
+    cs_score.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;${Number(cs_score.innerText) + 1}`;
   }
   else {
     user_color = '0074B6';
@@ -205,7 +477,7 @@ paper.addEventListener("click",()=>{
   let paper_icon = document.getElementsByClassName("paper-icon")[0];
   paper.style.cssText = `
   position: absolute;
-  transform: translate(-300%, 160%);
+  transform: translate(-286%, 153%);
   border: 16px solid #${user_color};
   `;
 
@@ -227,5 +499,14 @@ paper.addEventListener("click",()=>{
     position: absolute;
     transform: translate(${x}%, ${y}%);
   `;
+  if (wins == 1){
+    add_ripple_effect_user_wins();
+  }
+  else if (wins == -1){
+    add_ripple_effect_cs_wins();
+  }
+
+  add_specs(wins);
+
 })
 
